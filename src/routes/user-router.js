@@ -1,6 +1,6 @@
 import express from "express";
 import multer from "multer";
-import { signUp } from "../controllers/User-controller.js";
+import { loginUser, signUp } from "../controllers/User-controller.js";
 import User from "../models/user.js";
 
 const userRouter = express.Router();
@@ -31,5 +31,7 @@ userRouter.post(
   multer({ storage: fileStorage, fileFilter }).single("avatar"),
   signUp
 );
+
+userRouter.post("/user/login", loginUser);
 
 export default userRouter;
