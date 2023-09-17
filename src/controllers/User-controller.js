@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const signUp = async (req,res) => {
     const { email, password, username } = req.body;
-    const file = req;
+    const { file } = req;
 
     if(!email || !password || !username) {
         return res.status(400).json({ error: "Enter all required fields." });
