@@ -18,4 +18,8 @@ app.use("/avatars", express.static("public/avatar"));
 app.use("/api", userRouter);
 app.use("/", ...swaggerMiddleware());
 
-app.listen(process.env.port || 3000);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+

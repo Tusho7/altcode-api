@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
-const connection = () => {
+const connectToMongo = () => {
   try {
     const connectionUrl = `${process.env.MONGO_PROTOCOL}://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@${process.env.MONGO_HOST}/`;
-    return mongoose.connect(connectionUrl);
+    return mongoose.connect(connectionUrl, { useNewUrlParser: true, useUnifiedTopology: true });
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return error;
   }
 };
 
-export default connection;
+export default connectToMongo;
